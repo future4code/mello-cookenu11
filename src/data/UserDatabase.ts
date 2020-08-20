@@ -19,8 +19,21 @@ export class UserDatabase extends BaseDatabase {
             password,
           })
           .into(UserDatabase.TABLE_NAME);
-          console.log("sucesso na criação")
+        console.log("sucesso na criação");
       }
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  public async fetchUserInfoByEmail(email: string): Promise<any> {
+    try {
+      const result = await this.getConnection()
+        .select("*")
+        .where({ email })
+        .from(UserDatabase.TABLE_NAME);
+
+      return result[0];
     } catch (error) {
       throw new Error(error);
     }
