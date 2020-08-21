@@ -9,7 +9,7 @@ import { RecipesDatabase } from "./data/RecipesDatabase";
 import { postRecipe } from "./endpoints/postRecipe";
 import getRecipeById from "./endpoints/getRecipeById";
 import { getUserProfile } from "./endpoints/getUserProfile";
-import { getUserProfileById } from "./endpoints/getUserById";
+import { getUserProfileById } from "./endpoints/getUserProfileById";
 
 const app = express();
 dotenv.config();
