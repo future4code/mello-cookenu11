@@ -10,7 +10,7 @@ export class UserDatabase extends BaseDatabase {
     password: string
   ): Promise<any> {
     try {
-      if (password.length > 6) {
+      if (password.length >= 6) {
         await this.getConnection()
           .insert({
             id,
