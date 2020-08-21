@@ -9,6 +9,9 @@ import { RecipesDatabase } from "./data/RecipesDatabase";
 import { postRecipe } from "./endpoints/postRecipe";
 import getRecipeById from "./endpoints/getRecipeById";
 import { followUser } from "./endpoints/followUser";
+import { getUserProfile } from "./endpoints/getUserProfile";
+import { getUserProfileById } from "./endpoints/getUserProfileById";
+
 
 const app = express();
 dotenv.config();
@@ -30,6 +33,10 @@ app.get("/recipe/:id", getRecipeById);
 app.post("/user/follow", followUser);
 
 // const newRecipe = new RecipesDatabase();
+
+app.get("/user/profile", getUserProfile);
+app.get("/user/:id", getUserProfileById);
+
 
 // const newRecipe = new RecipesDatabase().createRecipe(
 //   "Miojo",
