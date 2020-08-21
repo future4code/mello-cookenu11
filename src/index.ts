@@ -8,6 +8,7 @@ import { login } from "./endpoints/login";
 import { RecipesDatabase } from "./data/RecipesDatabase";
 import { postRecipe } from "./endpoints/postRecipe";
 import getRecipeById from "./endpoints/getRecipeById";
+import { followUser } from "./endpoints/followUser";
 
 const app = express();
 dotenv.config();
@@ -26,6 +27,9 @@ app.post("/signup", signup);
 app.post("/login", login);
 app.post("/recipe/:id", postRecipe);
 app.get("/recipe/:id", getRecipeById);
+app.post("/user/follow", followUser);
+
+// const newRecipe = new RecipesDatabase();
 
 // const newRecipe = new RecipesDatabase().createRecipe(
 //   "Miojo",
@@ -33,8 +37,6 @@ app.get("/recipe/:id", getRecipeById);
 //   "2020-08-20",
 //   "001"
 // );
-
-// const newRecipe = new RecipesDatabase();
 
 // (async () => {
 //   console.log(await newRecipe.getRecipeById("001"));
