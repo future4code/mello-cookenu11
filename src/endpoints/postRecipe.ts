@@ -22,10 +22,16 @@ export const postRecipe = async (req: Request, res: Response) => {
     const token = req.headers.authorization as string;
 
     const authenticator = new Authenticator();
-    const tokenData = authenticator.getData(token);
+    const creatorId = authenticator.getData(token);
 
     const recipeDatabase = new RecipesDatabase();
-    await recipeDatabase.createRecipe(title, description, creation_date, id);
+    await recipeDatabase.createRecipe(
+      title,
+      description,
+      creation_date,
+      id,
+      creatorId.id
+    );
     res.status(200).send({
       message: "Receita adicionada",
     });

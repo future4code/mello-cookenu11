@@ -11,7 +11,8 @@ import getRecipeById from "./endpoints/getRecipeById";
 import { followUser } from "./endpoints/followUser";
 import { getUserProfile } from "./endpoints/getUserProfile";
 import { getUserProfileById } from "./endpoints/getUserProfileById";
-
+import { FeedDatabase } from "./data/FeedDatabase";
+import { getFeed } from "./endpoints/getFeed";
 
 const app = express();
 dotenv.config();
@@ -26,29 +27,11 @@ const server = app.listen(process.env.PORT || 3000, () => {
   }
 });
 
+app.get("/user/feed", getFeed);
 app.post("/signup", signup);
 app.post("/login", login);
-app.post("/recipe/:id", postRecipe);
+app.post("/recipe", postRecipe);
 app.get("/recipe/:id", getRecipeById);
 app.post("/user/follow", followUser);
-
-// const newRecipe = new RecipesDatabase();
-
 app.get("/user/profile", getUserProfile);
 app.get("/user/:id", getUserProfileById);
-
-
-// const newRecipe = new RecipesDatabase().createRecipe(
-//   "Miojo",
-//   "A melhor miojo do sul do Brasil",
-//   "2020-08-20",
-//   "001"
-// );
-
-// (async () => {
-//   console.log(await newRecipe.getRecipeById("001"));
-// })();
-
-// async () => {
-//   console.log(newRecipe);
-// };

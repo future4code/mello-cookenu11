@@ -10,7 +10,7 @@ export class FollowersDatabase extends BaseDatabase {
     try {
       await this.getConnection()
         .insert({
-          follower_id: followedId,
+          followed_id: followedId,
           user_id: followerId,
         })
         .where({ user_id: followerId })
