@@ -13,6 +13,7 @@ import { getUserProfile } from "./endpoints/getUserProfile";
 import { getUserProfileById } from "./endpoints/getUserProfileById";
 import { FeedDatabase } from "./data/FeedDatabase";
 import { getFeed } from "./endpoints/getFeed";
+import { unfollowUser } from "./endpoints/unfollowUser";
 
 const app = express();
 dotenv.config();
@@ -35,3 +36,4 @@ app.get("/recipe/:id", getRecipeById);
 app.post("/user/follow", followUser);
 app.get("/user/profile", getUserProfile);
 app.get("/user/:id", getUserProfileById);
+app.post("/user/unfollow", unfollowUser);

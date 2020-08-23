@@ -19,4 +19,18 @@ export class FollowersDatabase extends BaseDatabase {
       throw new Error(error);
     }
   }
+
+  public async unfollowUser(
+    followerId: string,
+    followedId: string
+  ): Promise<any> {
+    try {
+      await this.getConnection()
+        .delete()
+        .from(FollowersDatabase.TABLE_NAME)
+        .where({ user_id: followerId, followed_id: followedId });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
