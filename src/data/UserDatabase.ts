@@ -40,11 +40,15 @@ export class UserDatabase extends BaseDatabase {
   }
 
   public async getUserById(id: string): Promise<any> {
-    const result = await this.getConnection()
-      .select("id", "name", "email")
-      .from(UserDatabase.TABLE_NAME)
-      .where({ id });
+    try {
+      const result = await this.getConnection()
+        .select("id", "name", "email")
+        .from(UserDatabase.TABLE_NAME)
+        .where({ id });
 
-    return result[0];
+      return result[0];
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
