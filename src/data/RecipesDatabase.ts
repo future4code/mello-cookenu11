@@ -7,7 +7,8 @@ export class RecipesDatabase extends BaseDatabase {
     title: string,
     description: string,
     creation_date: string,
-    id: string
+    id: string,
+    creator_id:string
   ): Promise<void> {
     try {
       await this.getConnection()
@@ -16,6 +17,7 @@ export class RecipesDatabase extends BaseDatabase {
           title,
           description,
           creation_date,
+          creator_id
         })
         .into(RecipesDatabase.TABLE_NAME);
 
